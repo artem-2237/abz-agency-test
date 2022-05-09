@@ -1,16 +1,17 @@
 <template>
   <div :class="['input-wrapper']" :style="{width, marginBottom: mb}">
     <input
-        v-show="type !== 'file'"
+        v-show="type !== 'file' && type !== 'radio'"
         :type="type"
         :name="name"
         class="input"
         :id="label"
         :placeholder="placeholder"
         :accept="accept"
-        @input="$emit('update:modelValue', $event.target.value)"
+        @input="input"
     />
-    <label :for="label" class="inputFile-btn" v-show="type === 'file'">Upload</label>
+    <label :for="label" class="inputFile-btn" v-if="type === 'file'">Upload</label>
+    <label :for="label" class="label-radio" v-if="type === 'radio'"></label>
     <label
         v-if="label"
         :class="['input-label', {inputFile: type === 'file'}]"
@@ -46,7 +47,6 @@ export default {
     mb: {
       type: String,
       require: false,
-      default: '5px'
     },
     label: {
       type: String,
@@ -59,6 +59,19 @@ export default {
     accept: {
       type: String,
       require: false
+    },
+    val: {
+      type: String,
+      require: false
+    }
+  },
+  methods: {
+    input(e) {
+      if (this.type === 'radio') {
+        this.$emit('update:modelValue', this.val)
+      } else {
+        this.$emit('update:modelValue', e.target.value)
+      }
     }
   }
 }
@@ -77,11 +90,6 @@ export default {
   padding: 14px 16px;
   font-size: 16px;
   line-height: 26px;
-  &[type="radio"] {
-    width: 20px;
-    height: 20px;
-    margin-right: 12px;
-  }
 }
 .inputFile {
   border-left: none;
@@ -95,6 +103,28 @@ export default {
     height: 100%;
     width: 83px;
     cursor: pointer;
+  }
+}
+.label-radio {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid $secondary-color;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+.input:checked {
+  ~ .label-radio:before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: $secondary-color;
+    width: 10px;
+    height: 10px;
+    top: 4px;
+    left: 4px;
+    border-radius: 50%;
   }
 }
 </style>

@@ -3,6 +3,7 @@
       class="btn"
       :disabled="disabled"
       :type="type"
+      :style="{margin: center ? 'auto' : ''}"
       @click="$emit('action')"
   >{{ text }}</button>
 </template>
@@ -25,6 +26,11 @@ export default {
       type: String,
       require: false,
       default: 'button'
+    },
+    center: {
+      type: Boolean,
+      require: false,
+      default: false
     }
   }
 }
@@ -32,6 +38,7 @@ export default {
 
 <style lang="scss" scoped>
   .btn {
+    display: block;
     min-width: 100px;
     height: 34px;
     background: $primary-color;
@@ -41,6 +48,11 @@ export default {
     cursor: pointer;
     &:hover {
       background: lighten($primary-color, 10%);
+    }
+    &[disabled] {
+      background: #B4B4B4;
+      color: transparentize(#fff, .23);
+      cursor: default;
     }
   }
 </style>

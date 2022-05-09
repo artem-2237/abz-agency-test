@@ -5,7 +5,7 @@
       <p class="banner__text">
         What defines a good front-end developer is one that has skilled knowledge of HTML, CSS, JS with a vast understanding of User design thinking as they'll be building web interfaces with accessibility in mind. They should also be excited to learn, as the world of Front-End Development keeps evolving.
       </p>
-      <app-button text="Sign up" />
+      <app-button text="Sign up" center />
     </div>
   </div>
 </template>

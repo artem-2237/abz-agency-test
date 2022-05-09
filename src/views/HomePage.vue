@@ -5,7 +5,7 @@
       <h2 class="title section-get__title">Working with GET request</h2>
       <card-list />
       <div class="section-get__btn-wrapper">
-        <app-button text="Show more" />
+        <app-button text="Show more" center />
       </div>
     </section>
 
@@ -33,11 +33,13 @@
         <div class="radio-group section-post__radio-group">
           <div class="radio-group__title">Select your position</div>
           <app-input
-            v-for="position in positions"
-            :key="position"
+            v-for="p in positions"
+            :key="p"
             type="radio"
-            :label="position"
+            :label="p"
             name="position"
+            :val="p"
+            v-model="position"
           />
         </div>
         <app-input
@@ -45,8 +47,10 @@
             accept="image/*"
             label="Upload your photo"
             placeholder="Upload"
+            mb="50px"
             v-model="photo"
         />
+        <app-button text="Sing up" type="submit" disabled center />
       </form>
     </section>
   </div>
@@ -93,12 +97,16 @@ export default {
   }
 }
 .section-post {
+  padding-bottom: 100px;
   &__title {
     margin-bottom: 50px;
   }
   &__form {
     width: 380px;
     margin: auto;
+  }
+  &__radio-group {
+    margin-bottom: 50px;
   }
 }
 </style>
