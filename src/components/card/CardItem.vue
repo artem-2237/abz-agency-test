@@ -5,7 +5,7 @@
     </div>
     <div class="card__name">Takamaru Ayako Jurrien</div>
     <div class="card__info">
-      <span class="card__job">Former Senior Director</span>
+      <span class="card__position">Former Senior Director</span>
       <span class="card__email">Winny_develop@gmail.com</span>
       <span class="card__phone">+38 (098) 278 22 88</span>
     </div>

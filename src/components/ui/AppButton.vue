@@ -2,6 +2,7 @@
   <button
       class="btn"
       :disabled="disabled"
+      :type="type"
       @click="$emit('action')"
   >{{ text }}</button>
 </template>
@@ -9,6 +10,7 @@
 <script>
 export default {
   name: 'AppButton',
+  emits: ['action'],
   props: {
     text: {
       type: String,
@@ -18,6 +20,11 @@ export default {
       type: Boolean,
       require: false,
       default: false
+    },
+    type: {
+      type: String,
+      require: false,
+      default: 'button'
     }
   }
 }

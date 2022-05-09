@@ -48,6 +48,12 @@ h2.title {
   }
 }
 
+.radio-group {
+  &__title {
+    margin-bottom: 11px;
+  }
+}
+
 @media (max-width: 1200px) {
   .container {
     width: 904px;
