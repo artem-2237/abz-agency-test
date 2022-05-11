@@ -9,6 +9,10 @@ export default {
   name: 'App',
   components: {
     MainLayout,
+  },
+  async mounted() {
+    await this.$store.dispatch('loadPositions')
+    await this.$store.dispatch('loadUsers')
   }
 }
 </script>

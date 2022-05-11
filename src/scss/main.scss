@@ -54,6 +54,28 @@ h2.title {
   }
 }
 
+.dataTitle {
+  display: block;
+  position: relative;
+  &:before {
+    content: attr(data-title);
+    position: absolute;
+    display: none;
+    padding: 3px 16px;
+    background: transparentize(#000, .13);
+    border-radius: 4px;
+    color: #fff;
+    top: 30px;
+    left: 10px;
+  }
+  &:hover {
+    cursor: pointer;
+    &:before {
+      display: block;
+    }
+  }
+}
+
 @media (max-width: 1200px) {
   .container {
     width: 904px;

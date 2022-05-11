@@ -1,13 +1,17 @@
 <template>
   <div class="card">
     <div class="card__image">
-      <img src="@/assets/photo-cover.svg" alt="user" width="70" height="70">
+      <img :src="user.photo" alt="user" width="70" height="70">
     </div>
-    <div class="card__name">Takamaru Ayako Jurrien</div>
+    <div :class="['card__name', {dataTitle: user.name.length > 38}]" :data-title="user.name">
+      {{ user.name.length > 40 ? user.name.substring(0, 38) + '...' : user.name }}
+    </div>
     <div class="card__info">
-      <span class="card__position">Former Senior Director</span>
-      <span class="card__email">Winny_develop@gmail.com</span>
-      <span class="card__phone">+38 (098) 278 22 88</span>
+      <span class="card__position">{{ user.position }}</span>
+      <span :class="['card__email', {dataTitle: user.name.length > 38}]" :data-title="user.email">
+        {{ user.name.length > 40 ? user.name.substring(0, 38) + '...' : user.name }}
+      </span>
+      <span class="card__phone" :title="user.phone">{{ user.phone }}</span>
     </div>
   </div>
 </template>
@@ -15,6 +19,12 @@
 <script>
 export default {
   name: 'CardItem',
+  props: {
+    user: {
+      type: Object,
+      require: true
+    }
+  }
 }
 </script>
 
@@ -28,6 +38,9 @@ export default {
   text-align: center;
   &__image {
     margin-bottom: 20px;
+    & > img {
+      border-radius: 50%;
+    }
   }
   &__name {
     margin-bottom: 20px;
